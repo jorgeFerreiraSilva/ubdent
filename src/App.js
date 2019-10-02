@@ -10,8 +10,10 @@ function App() {
     <div className="App">
       {/* <FormProduto />
       <SideNavPage /> */}
-      <Login />
-    </div>
+       <>
+        <Login />
+       </>
+      </div>
   )
 }
 
