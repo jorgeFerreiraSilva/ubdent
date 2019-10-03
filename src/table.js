@@ -1,7 +1,8 @@
 
-import React from 'react'
+import React, { Fragment } from 'react'
 // import {withRouter} from 'react-router-dom'
 import {MDBDataTable, Container, Row, Col, Card, CardHeader, CardBody, Fa, MDBBtn} from 'mdbreact'
+import { BrowserRouter as Router,  Link, Redirect } from "react-router-dom"
 // import { Messages } from '../../components/Layout/Messages';
 
 function Table() {
@@ -42,16 +43,22 @@ function Table() {
             field: 'salary',
             sort: 'asc',
             width: 100
+          },
+          {label: 'Edit Infos',
+           field:'Edit',
+           sort: 'none'
           }
         ],
         rows: [
+
           {
-            name: 'Tiger Nixon',
+            name: `Tiger Nixon`,
             position: 'System Architect',
             office: 'Edinburgh',
             age: '61',
             date: '2011/04/25',
-            salary: '$320'
+            salary: '$320', 
+            button:<Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           },
           {
             name: 'Garrett Winters',
@@ -59,7 +66,8 @@ function Table() {
             office: 'Tokyo',
             age: '63',
             date: '2011/07/25',
-            salary: '$170'
+            salary: '$170',
+            button:<Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           },
           {
             name: 'Ashton Cox',
@@ -67,7 +75,8 @@ function Table() {
             office: 'San Francisco',
             age: '66',
             date: '2009/01/12',
-            salary: '$86'
+            salary: '$86',
+            button: <Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           },
           {
             name: 'Cedric Kelly',
@@ -75,7 +84,8 @@ function Table() {
             office: 'Edinburgh',
             age: '22',
             date: '2012/03/29',
-            salary: '$433'
+            salary: '$433',
+            button: <Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           },
           {
             name: 'Airi Satou',
@@ -83,7 +93,8 @@ function Table() {
             office: 'Tokyo',
             age: '33',
             date: '2008/11/28',
-            salary: '$162'
+            salary: '$162',
+            button:<Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           },
           {
             name: 'Brielle Williamson',
@@ -91,7 +102,8 @@ function Table() {
             office: 'New York',
             age: '61',
             date: '2012/12/02',
-            salary: '$372'
+            salary: '$372',
+            button:<Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           },
           {
             name: 'Herrod Chandler',
@@ -99,7 +111,8 @@ function Table() {
             office: 'San Francisco',
             age: '59',
             date: '2012/08/06',
-            salary: '$137'
+            salary: '$137',
+            button: <Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           },
           {
             name: 'Rhona Davidson',
@@ -107,7 +120,8 @@ function Table() {
             office: 'Tokyo',
             age: '55',
             date: '2010/10/14',
-            salary: '$327'
+            salary: '$327',
+            button: <Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           },
           {
             name: 'Colleen Hurst',
@@ -115,7 +129,8 @@ function Table() {
             office: 'San Francisco',
             age: '39',
             date: '2009/09/15',
-            salary: '$205'
+            salary: '$205',
+            button:<Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           },
           {
             name: 'Sonya Frost',
@@ -123,7 +138,8 @@ function Table() {
             office: 'Edinburgh',
             age: '23',
             date: '2008/12/13',
-            salary: '$103'
+            salary: '$103',
+            button:<Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           },
           {
             name: 'Jena Gaines',
@@ -131,7 +147,8 @@ function Table() {
             office: 'London',
             age: '30',
             date: '2008/12/19',
-            salary: '$90'
+            salary: '$90',
+            button:<Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           },
           {
             name: 'Quinn Flynn',
@@ -139,7 +156,8 @@ function Table() {
             office: 'Edinburgh',
             age: '22',
             date: '2013/03/03',
-            salary: '$342'
+            salary: '$342',
+            button:<Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           },
           {
             name: 'Charde Marshall',
@@ -147,7 +165,8 @@ function Table() {
             office: 'San Francisco',
             age: '36',
             date: '2008/10/16',
-            salary: '$470'
+            salary: '$470',
+            button:<Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           },
           {
             name: 'Haley Kennedy',
@@ -155,7 +174,8 @@ function Table() {
             office: 'London',
             age: '43',
             date: '2012/12/18',
-            salary: '$313'
+            salary: '$313',
+            button:<Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           },
           {
             name: 'Tatyana Fitzpatrick',
@@ -163,7 +183,8 @@ function Table() {
             office: 'London',
             age: '19',
             date: '2010/03/17',
-            salary: '$385'
+            salary: '$385',
+            button:<Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           },
           {
             name: 'Michael Silva',
@@ -171,7 +192,8 @@ function Table() {
             office: 'London',
             age: '66',
             date: '2012/11/27',
-            salary: '$198'
+            salary: '$198',
+            button:<Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           },
           {
             name: 'Paul Byrd',
@@ -179,7 +201,8 @@ function Table() {
             office: 'New York',
             age: '64',
             date: '2010/06/09',
-            salary: '$725'
+            salary: '$725',
+            button:<Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           },
           {
             name: 'Gloria Little',
@@ -187,7 +210,8 @@ function Table() {
             office: 'New York',
             age: '59',
             date: '2009/04/10',
-            salary: '$237'
+            salary: '$237',
+            button:<Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           },
           {
             name: 'Bradley Greer',
@@ -195,7 +219,8 @@ function Table() {
             office: 'London',
             age: '41',
             date: '2012/10/13',
-            salary: '$132'
+            salary: '$132',
+            button:<Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           },
           {
             name: 'Dai Rios',
@@ -203,7 +228,8 @@ function Table() {
             office: 'Edinburgh',
             age: '35',
             date: '2012/09/26',
-            salary: '$217'
+            salary: '$217',
+            button:<Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           },
           {
             name: 'Jenette Caldwell',
@@ -211,7 +237,8 @@ function Table() {
             office: 'New York',
             age: '30',
             date: '2011/09/03',
-            salary: '$345'
+            salary: '$345',
+            button:<Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           },
           {
             name: 'Yuri Berry',
@@ -219,7 +246,8 @@ function Table() {
             office: 'New York',
             age: '40',
             date: '2009/06/25',
-            salary: '$675'
+            salary: '$675',
+            button:<Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           },
           {
             name: 'Caesar Vance',
@@ -227,7 +255,8 @@ function Table() {
             office: 'New York',
             age: '21',
             date: '2011/12/12',
-            salary: '$106'
+            salary: '$106',
+            button:<Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           },
           {
             name: 'Doris Wilder',
@@ -235,7 +264,8 @@ function Table() {
             office: 'Sidney',
             age: '23',
             date: '2010/09/20',
-            salary: '$85'
+            salary: '$85',
+            button:<Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           },
           {
             name: 'Angelica Ramos',
@@ -243,7 +273,8 @@ function Table() {
             office: 'London',
             age: '47',
             date: '2009/10/09',
-            salary: '$1'
+            salary: '$1',
+            button:<Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           },
           {
             name: 'Gavin Joyce',
@@ -251,7 +282,8 @@ function Table() {
             office: 'Edinburgh',
             age: '42',
             date: '2010/12/22',
-            salary: '$92'
+            salary: '$92',
+            button:<Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           },
           {
             name: 'Jennifer Chang',
@@ -259,7 +291,8 @@ function Table() {
             office: 'Singapore',
             age: '28',
             date: '2010/11/14',
-            salary: '$357'
+            salary: '$357',
+            button:<Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           },
           {
             name: 'Brenden Wagner',
@@ -267,7 +300,8 @@ function Table() {
             office: 'San Francisco',
             age: '28',
             date: '2011/06/07',
-            salary: '$206'
+            salary: '$206',
+            button:<Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           },
           {
             name: 'Fiona Green',
@@ -275,7 +309,8 @@ function Table() {
             office: 'San Francisco',
             age: '48',
             date: '2010/03/11',
-            salary: '$850'
+            salary: '$850',
+            button:<Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           },
           {
             name: 'Shou Itou',
@@ -283,7 +318,8 @@ function Table() {
             office: 'Tokyo',
             age: '20',
             date: '2011/08/14',
-            salary: '$163'
+            salary: '$163',
+            button:<Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           },
           {
             name: 'Michelle House',
@@ -291,7 +327,8 @@ function Table() {
             office: 'Sidney',
             age: '37',
             date: '2011/06/02',
-            salary: '$95'
+            salary: '$95',
+            button:<Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           },
           {
             name: 'Suki Burks',
@@ -299,7 +336,8 @@ function Table() {
             office: 'London',
             age: '53',
             date: '2009/10/22',
-            salary: '$114'
+            salary: '$114',
+            button:<Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           },
           {
             name: 'Prescott Bartlett',
@@ -307,7 +345,8 @@ function Table() {
             office: 'London',
             age: '27',
             date: '2011/05/07',
-            salary: '$145'
+            salary: '$145',
+            button:<Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           },
           {
             name: 'Gavin Cortez',
@@ -315,7 +354,8 @@ function Table() {
             office: 'San Francisco',
             age: '22',
             date: '2008/10/26',
-            salary: '$235'
+            salary: '$235',
+            button:<Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           },
           {
             name: 'Martena Mccray',
@@ -323,7 +363,8 @@ function Table() {
             office: 'Edinburgh',
             age: '46',
             date: '2011/03/09',
-            salary: '$324'
+            salary: '$324',
+            button:<Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           },
           {
             name: 'Unity Butler',
@@ -331,7 +372,8 @@ function Table() {
             office: 'San Francisco',
             age: '47',
             date: '2009/12/09',
-            salary: '$85'
+            salary: '$85',
+            button:<Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           },
           {
             name: 'Howard Hatfield',
@@ -339,7 +381,8 @@ function Table() {
             office: 'San Francisco',
             age: '51',
             date: '2008/12/16',
-            salary: '$164'
+            salary: '$164',
+            button:<Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           },
           {
             name: 'Hope Fuentes',
@@ -347,7 +390,8 @@ function Table() {
             office: 'San Francisco',
             age: '41',
             date: '2010/02/12',
-            salary: '$109'
+            salary: '$109',
+            button:<Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           },
           {
             name: 'Vivian Harrell',
@@ -355,7 +399,8 @@ function Table() {
             office: 'San Francisco',
             age: '62',
             date: '2009/02/14',
-            salary: '$452'
+            salary: '$452',
+            button:<Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           },
           {
             name: 'Timothy Mooney',
@@ -363,7 +408,8 @@ function Table() {
             office: 'London',
             age: '37',
             date: '2008/12/11',
-            salary: '$136'
+            salary: '$136',
+            button:<Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           },
           {
             name: 'Jackson Bradshaw',
@@ -371,7 +417,8 @@ function Table() {
             office: 'New York',
             age: '65',
             date: '2008/09/26',
-            salary: '$645'
+            salary: '$645',
+            button:<Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           },
           {
             name: 'Olivia Liang',
@@ -379,7 +426,8 @@ function Table() {
             office: 'Singapore',
             age: '64',
             date: '2011/02/03',
-            salary: '$234'
+            salary: '$234',
+            button:<Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           },
           {
             name: 'Bruno Nash',
@@ -387,7 +435,8 @@ function Table() {
             office: 'London',
             age: '38',
             date: '2011/05/03',
-            salary: '$163'
+            salary: '$163',
+            button:<Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           },
           {
             name: 'Sakura Yamamoto',
@@ -395,7 +444,8 @@ function Table() {
             office: 'Tokyo',
             age: '37',
             date: '2009/08/19',
-            salary: '$139'
+            salary: '$139',
+            button:<Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           },
           {
             name: 'Thor Walton',
@@ -403,7 +453,8 @@ function Table() {
             office: 'New York',
             age: '61',
             date: '2013/08/11',
-            salary: '$98'
+            salary: '$98',
+            button:<Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           },
           {
             name: 'Finn Camacho',
@@ -411,7 +462,8 @@ function Table() {
             office: 'San Francisco',
             age: '47',
             date: '2009/07/07',
-            salary: '$87'
+            salary: '$87',
+            button:<Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           },
           {
             name: 'Serge Baldwin',
@@ -419,7 +471,8 @@ function Table() {
             office: 'Singapore',
             age: '64',
             date: '2012/04/09',
-            salary: '$138'
+            salary: '$138',
+            button:<Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           },
           {
             name: 'Zenaida Frank',
@@ -427,7 +480,8 @@ function Table() {
             office: 'New York',
             age: '63',
             date: '2010/01/04',
-            salary: '$125'
+            salary: '$125',
+            button:<Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           },
           {
             name: 'Zorita Serrano',
@@ -435,7 +489,8 @@ function Table() {
             office: 'San Francisco',
             age: '56',
             date: '2012/06/01',
-            salary: '$115'
+            salary: '$115',
+            button:<Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           },
           {
             name: 'Jennifer Acosta',
@@ -443,7 +498,8 @@ function Table() {
             office: 'Edinburgh',
             age: '43',
             date: '2013/02/01',
-            salary: '$75'
+            salary: '$75',
+            button:<Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           },
           {
             name: 'Cara Stevens',
@@ -451,7 +507,8 @@ function Table() {
             office: 'New York',
             age: '46',
             date: '2011/12/06',
-            salary: '$145'
+            salary: '$145',
+            button:<Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           },
           {
             name: 'Hermione Butler',
@@ -459,7 +516,8 @@ function Table() {
             office: 'London',
             age: '47',
             date: '2011/03/21',
-            salary: '$356'
+            salary: '$356',
+            button:<Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           },
           {
             name: 'Lael Greer',
@@ -467,7 +525,8 @@ function Table() {
             office: 'London',
             age: '21',
             date: '2009/02/27',
-            salary: '$103'
+            salary: '$103',
+            button:<Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           },
           {
             name: 'Jonas Alexander',
@@ -475,7 +534,8 @@ function Table() {
             office: 'San Francisco',
             age: '30',
             date: '2010/07/14',
-            salary: '$86'
+            salary: '$86',
+            button:<Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           },
           {
             name: 'Shad Decker',
@@ -483,7 +543,8 @@ function Table() {
             office: 'Edinburgh',
             age: '51',
             date: '2008/11/13',
-            salary: '$183'
+            salary: '$183',
+            button:<Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           },
           {
             name: 'Michael Bruce',
@@ -491,7 +552,8 @@ function Table() {
             office: 'Singapore',
             age: '29',
             date: '2011/06/27',
-            salary: '$183'
+            salary: '$183',
+            button:<Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           },
           {
             name: 'Donna Snider',
@@ -499,12 +561,15 @@ function Table() {
             office: 'New York',
             age: '27',
             date: '2011/01/25',
-            salary: '$112'
+            salary: '$112',
+            button:<Link to='/form'><MDBBtn rounded color="info" onClick={{}}>Edit</MDBBtn></Link>
           }
         ]
       }
+      // let btnItens = data.foreach(() =>{ <MDBBtn rounded color="info">Info</MDBBtn> })
  return (
-    <Container >
+   <Router>
+    <Container style={{alignItems: 'flex-end',width: '83%', backgorundColor:'red' }}>
     <Row>
         <Col>
             <Card narrow>
@@ -526,12 +591,14 @@ function Table() {
                         infoLabel={["Mostrando", "até", "de", "resultados"]}
                         paginationLabel={["Anterior", "Próximo"]}
                         data={data}
-                    />
+                        >
+                    </MDBDataTable>  
                 </CardBody>
             </Card>
         </Col>
     </Row>
     </Container>
+    </Router>
         )
  }
 

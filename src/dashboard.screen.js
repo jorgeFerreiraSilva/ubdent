@@ -19,7 +19,7 @@ sidenavToggle = sidenavId => () => {
 render() {
     return (
       <Router>
-        <MDBContainer style={{marginTop: '5%'}}>
+        <MDBContainer style={{ marginTop: '2%', marginBottom: '2%', justifyContent: 'flex-end'}}>
             <Table />
           {/* <MDBBtn onClick={this.sidenavToggle("Left")}>
             <MDBIcon size="lg" icon="bars" />
@@ -28,15 +28,15 @@ render() {
             className="sn-bg-1 blue-gradient" color='indigo'>
             <li>
               <div className="logo-wrapper sn-ad-avatar-wrapper">
-                <a href="#!">
-                  <img alt="" src="https://mdbootstrap.com/img/Photos/Avatars/img%20(10).jpg" className="rounded-circle" />
-                  <span>Anna Deynah</span>
+                <a href="#">
+                  {/* <img alt="" src="https://mdbootstrap.com/img/Photos/Avatars/img%20(10).jpg" className="rounded-circle" /> */}
+                  <span style={{alignSelf: 'center' }}>Logo Ubdent</span>
                 </a>
               </div>
             </li>
             <MDBSideNavNav>
-              <MDBSideNavLink to="/other-page" topLevel>
-                <MDBIcon icon="pencil-alt" className="mr-2" />Submit listing</MDBSideNavLink>
+              <MDBSideNavLink to="#" topLevel>
+                <MDBIcon icon="pencil-alt" className="mr-2" />Anamneses</MDBSideNavLink>
               {/* <MDBSideNavCat name="Submit blog" id="submit-blog" icon="chevron-right">
                 <MDBSideNavLink>Submit listing</MDBSideNavLink>
                 <MDBSideNavLink>Registration form</MDBSideNavLink>
@@ -56,7 +56,7 @@ render() {
             </MDBSideNavNav>
           </MDBSideNav>
         </MDBContainer>
-      </Router>
+       </Router>
     );
   }
 }

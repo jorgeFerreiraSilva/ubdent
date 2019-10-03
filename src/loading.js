@@ -3,7 +3,7 @@ import { Container, Progress } from 'mdbreact';
 
 const Loading = () => {
     return (
-      <Container>
+      <Container style={{marginTop:'25%'}}>
         <Progress material preloader color="indigo dark" />
       </Container>
     )

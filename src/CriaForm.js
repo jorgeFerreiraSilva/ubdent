@@ -14,7 +14,7 @@ class CriaForm extends Component{
         let ativo = this.props.values && this.props.values.ativo ? this.props.values.ativo : false
         let values = this.props.values && this.props.values ? this.props.values : []
         return (
-        <Container>
+        <Container style={{marginTop: '1%'}}>
             <Row key="rowContainer">
                 <Col>
                     <Card narrow>
@@ -97,12 +97,12 @@ class CriaForm extends Component{
                                         this.props.radioAtivo !== false 
                                         && this.props.onRadioEvent !== undefined &&
                                          <Row key="ativoRow">
-                                            <FormSwitch
+                                            {/* <FormSwitch
                                                 label = "Ativo?"
                                                 id = "ativo"
                                                 onChange = {this.props.onRadioEvent}
                                                 checked={ativo}
-                                            />
+                                            /> */}
                                             { this.props.onDeleteClick && this.props.id &&
                                                 <div className="text-center py-4 mt-3">
                                                     <ExcluirModal executarExclusao={this.props.onDeleteClick}></ExcluirModal>
