@@ -1,5 +1,5 @@
 import  React from "react"
-import Modal from "./modal"
+import Modal from "../modal"
 import  FormLabel  from  './formLabel';
 import {  MDBBtn, Fa } from 'mdbreact';
 class ModalVendedor extends React.Component  {

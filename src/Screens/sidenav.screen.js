@@ -2,19 +2,22 @@ import React, { Component } from "react"
 import { BrowserRouter as Router } from "react-router-dom"
 import { MDBSideNavCat, MDBSideNavNav, MDBSideNav, MDBSideNavLink, MDBContainer, MDBIcon, MDBBtn } from "mdbreact"
 import Table from './table'
+// import useToggle from '../useToggle'
 
-class SideNavPage extends Component {
-  state = {
-    sideNavLeft: false,
-    sideNavRight: false
-  }
+class SideNavScreen extends Component {
+  // state = {
+  //   sideNavLeft: false,
+  //   sideNavRight: false
+  // }
+  // const [ sideNavRight, updateSideNavRight ] = useToggle(false)
+  // const [ sideNavLeft, updateSideNavRight ] = useToggle(false)
 
-sidenavToggle = sidenavId => () => {
-  const sidenavNr = `sideNav${sidenavId}`
-  this.setState({
-    [sidenavNr]: !this.state[sidenavNr]
-  });
-};
+// sidenavToggle = sidenavId => () => {
+//   const sidenavNr = `sideNav${sidenavId}`
+//   this.setState({
+//     [sidenavNr]: !this.state[sidenavNr]
+//   });
+// };
 
 render() {
     return (
@@ -42,4 +45,4 @@ render() {
   }
 }
 
-export default SideNavPage;
+export default SideNavScreen

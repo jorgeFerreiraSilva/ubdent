@@ -25,4 +25,4 @@ Component.propTypes = {
     checked: PropTypes.bool
 }
 
-export default FormSwitch;
+export default FormSwitch

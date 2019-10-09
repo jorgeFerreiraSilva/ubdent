@@ -1,14 +1,14 @@
 import React, {Component} from "react";
 // import {withRouter} from 'react-router-dom'
 import {MDBBtn} from 'mdbreact';
-import Loading from './loading';
+import Loading from '../loading';
 import CriaForm  from  './CriaForm'
 import moment from 'moment';
 import 'moment/locale/pt-br';
 import {FormProvider} from './FormContext'
 import FormSelect  from './formSelect' 
 import FormInput  from  './formInput'
-import { Messages } from './messages'
+import { Messages } from '../messages'
 
 class FormProduto extends Component {
 
