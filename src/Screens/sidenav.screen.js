@@ -1,10 +1,12 @@
-import React, { Component } from "react"
+import React, { Component, useEffect } from "react"
 import { BrowserRouter as Router } from "react-router-dom"
 import { MDBSideNavCat, MDBSideNavNav, MDBSideNav, MDBSideNavLink, MDBContainer, MDBIcon, MDBBtn } from "mdbreact"
 import Table from './table'
 // import useToggle from '../useToggle'
+import useGlobal from '../Store'
 
-class SideNavScreen extends Component {
+const SideNavScreen = () => {
+  const [ state ] = useGlobal()
   // state = {
   //   sideNavLeft: false,
   //   sideNavRight: false
@@ -19,7 +21,13 @@ class SideNavScreen extends Component {
 //   });
 // };
 
-render() {
+  useEffect(() => {
+  console.log(state.users.username)
+  console.log(state.users.password)
+  console.log(state.users.isAutheticated)
+  }, [])
+
+// render() {
     return (
       <Router>
         <MDBContainer style={{ marginTop: '2%', marginBottom: '2%', justifyContent: 'flex-end'}}>
@@ -41,8 +49,8 @@ render() {
           </MDBSideNav>
         </MDBContainer>
        </Router>
-    );
-  }
+    )
+  // }
 }
 
 export default SideNavScreen
