@@ -21,7 +21,6 @@ function Login () {
    const handleSubmit = (event) => {
         try {
         event.preventDefault()
-        console.log('fydydyudyudyu');
         
         if (email !== '' && senha !== '') {
             if(
@@ -36,8 +35,8 @@ function Login () {
               console.log(state.users.password)
               console.log(actions)
               history.push('/anamneses')
-              // alert('voce está logado');
-              // console.log(useGlobal)
+              // alert('voce está logado')
+              console.log(useGlobal)
 
             } else  alert('voce errou  tente de novamente')
         }

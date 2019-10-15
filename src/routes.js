@@ -28,7 +28,6 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 }
 const Routes = () => {
   const [state] = useGlobal()
-  // const is
   return(
   <Router>
     <Switch>
@@ -36,7 +35,7 @@ const Routes = () => {
       <PrivateRoute
         path="/anamneses"
         component={() =>  <SideNavPage /> } />
-      <PrivateRoute path="/form" component={<FormProduto />} />
+      <PrivateRoute path="/form" component={() => <FormProduto />} />
     </Switch>
   </Router>
 )

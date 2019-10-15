@@ -26,9 +26,6 @@ const SideNavPage = () => {
 
   // render() {
   return (
-    // <div>
-    //   <a>AQUI</a>
-    // </div>
     <MDBContainer
       style={{
         marginTop: '2%',
@@ -55,10 +52,22 @@ const SideNavPage = () => {
           </div>
         </li>
         <MDBSideNavNav>
-          <MDBSideNavLink to="#" topLevel>
+           <a href="#">
+              {/* <img alt="" src="https://mdbootstrap.com/img/Photos/Avatars/img%20(10).jpg" className="rounded-circle" /> */}
+              <span style={{ alignSelf: 'center' }}>Logo Ubdent</span>
+            </a>
+           <a href="#">
+              {/* <img alt="" src="https://mdbootstrap.com/img/Photos/Avatars/img%20(10).jpg" className="rounded-circle" /> */}
+              <span style={{ alignSelf: 'center' }}>Logo Ubdent</span>
+            </a>
+           <a href="#">
+              {/* <img alt="" src="https://mdbootstrap.com/img/Photos/Avatars/img%20(10).jpg" className="rounded-circle" /> */}
+              <span style={{ alignSelf: 'center' }}>Logo Ubdent</span>
+            </a>
+          {/* <MDBSideNavLink to="#" topLevel>
               <MDBIcon icon="pencil-alt" className="mr-2" />
               Anamneses
-          </MDBSideNavLink>
+          </MDBSideNavLink> */}
         </MDBSideNavNav>
       </MDBSideNav>
     </MDBContainer>

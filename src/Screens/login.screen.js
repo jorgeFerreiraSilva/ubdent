@@ -42,11 +42,9 @@ function LoginScreen({ handlers }) {
                             </Card>
                         </Col>
                     </Row>
-                </Container> }
+                </Container>
             </Fragment>
         )
 }
 
 export default LoginScreen
-
-// to={{pathname: (state.users.isAuthenticated = true) ?  '/anamneses': '/'}
