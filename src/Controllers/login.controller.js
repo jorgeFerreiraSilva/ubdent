@@ -9,10 +9,9 @@ import { useHistory } from "react-router-dom"
 
 function Login () {
   const [state, actions ] = useGlobal()
-  const [ email, updateEmail, resetEmail ] = useInputState('')
-  const [ senha, updateSenha, resetSenha ] = useInputState('')
+  const [ email, updateEmail ] = useInputState('')
+  const [ senha, updateSenha ] = useInputState('')
   const history = useHistory()
-  // const [loading, toggleLoading] = useToggle(false)
 
   useEffect(()=> {
     console.log(state.users.isAuthenticated)
@@ -35,10 +34,9 @@ function Login () {
               console.log(state.users.password)
               console.log(actions)
               history.push('/anamneses')
-              // alert('voce está logado')
+              // alert('voce está logado
               console.log(useGlobal)
-
-            } else  alert('voce errou  tente de novamente')
+            } else alert('voce errou  tente de novamente')
         }
         } catch (error) {
         console.log(error)

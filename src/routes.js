@@ -1,7 +1,7 @@
 import React from 'react'
 // import { isAuthenticated } from './auth'
 import Login from './Controllers/login.controller'
-import SideNavPage from './dashboard.screen'
+import Dashboard from './Controllers/dashboard.controller'
 import {
   BrowserRouter as Router,
   Route,
@@ -31,11 +31,16 @@ const Routes = () => {
   return(
   <Router>
     <Switch>
-      <Route exact path="/" component={() => <Login />} />
+      <Route 
+        exact 
+        path='/'
+        component={ () => <Login /> } />
       <PrivateRoute
-        path="/anamneses"
-        component={() =>  <SideNavPage /> } />
-      <PrivateRoute path="/form" component={() => <FormProduto />} />
+        path='/anamneses'
+        component={ () =>  <Dashboard /> } />
+      <PrivateRoute
+       path='/form'
+       component={ () => <FormProduto /> } />
     </Switch>
   </Router>
 )

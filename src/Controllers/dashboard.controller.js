@@ -1,9 +1,11 @@
 import React from 'react'
 import useGlobal from '../Store'
-import SideNavScreen from '../Screens/sidenav.screen'
+import DashboardScreen from '../Screens/dashboard.screen'
 
-function SideNav () {
+function Dashboard () {
   const [state, actions ] = useGlobal()
+
+  console.log('state do sidenav', state)
 
   const onChangeText = (property, value) => {
     try {
@@ -18,8 +20,8 @@ function SideNav () {
   }
 
   return (
-    <SideNavScreen handlers={handlers} />
+    <DashboardScreen handlers={handlers} />
   )
 }
 
-export default SideNav
+export default Dashboard

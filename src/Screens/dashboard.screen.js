@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import React, { Component } from 'react'
+import { BrowserRouter as Router } from 'react-router-dom'
 import {
   MDBSideNavCat,
   MDBSideNavNav,
@@ -9,9 +9,9 @@ import {
   MDBIcon,
   MDBBtn
 } from 'mdbreact';
-import Table from './table';
+import Table from '../table'
 
-const SideNavPage = () => {
+const DashboardScreen = () => {
   // state = {
   //   sideNavLeft: false,
   //   sideNavRight: false
@@ -75,4 +75,4 @@ const SideNavPage = () => {
   // }
 };
 
-export default SideNavPage;
+export default DashboardScreen
