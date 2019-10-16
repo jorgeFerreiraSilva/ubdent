@@ -23,6 +23,15 @@ function Table() {
       // const data = state.data.rows.map((item) => {
       //     // item['button'] = button
       //     return item.button = <MDBBtn rounded color="info" onClick={() => history.push('/form')}>Edit</MDBBtn>
+      //     return {
+      //        button: <MDBBtn rounded color="info" onClick={() => history.push('/form')}>Edit</MDBBtn>,
+      //        name: item.name,
+      //        position: item.position,
+      //        office: item.office,
+      //        age: item.age,
+      //        date: item.date,
+      //        salary: item.salary }
+      //        
       // })
       console.log(state.data)
       // console.log('data alone', data)
