@@ -1,42 +1,26 @@
 
 import React, { Fragment } from 'react'
-// import {withRouter} from 'react-router-dom'
 import {MDBDataTable, Container, Row, Col, Card, CardHeader, CardBody, Fa, MDBBtn} from 'mdbreact'
-import { BrowserRouter as Router,  Link, Redirect } from "react-router-dom"
 // import { Messages } from '../../components/Layout/Messages'
 import { useHistory } from 'react-router-dom'
 import useGlobal from './Store'
-import { object } from 'prop-types'
 
 function Table() {
     const history = useHistory()
     const [ state ] = useGlobal()
-    // const data = {
-    //     columns: [
-         
-    //     ],
-    //     rows: [
-    //     ]
-    //   }
-      // let btnItens = data.foreach(() =>{ <MDBBtn rounded color="info">Info</MDBBtn> })
-      const button = { button: <MDBBtn rounded color="info" onClick={() => history.push('/form')}>Edit</MDBBtn> }
-      // const data = state.data.rows.map((item) => {
-      //     // item['button'] = button
-      //     return item.button = <MDBBtn rounded color="info" onClick={() => history.push('/form')}>Edit</MDBBtn>
-      //     return {
-      //        button: <MDBBtn rounded color="info" onClick={() => history.push('/form')}>Edit</MDBBtn>,
-      //        name: item.name,
-      //        position: item.position,
-      //        office: item.office,
-      //        age: item.age,
-      //        date: item.date,
-      //        salary: item.salary }
-      //        
-      // })
-      console.log(state.data)
-      // console.log('data alone', data)
+
+    const { data } = state
+
+      const dataRows = data.rows.map((item) => {
+            item = {
+             button: <MDBBtn rounded color="info" onClick={() => history.push('/form')}>Edit</MDBBtn>,
+            ...item
+            }
+            return item
+      })
+ data.rows = dataRows
+
  return (
-  //  <Router>
     <Container style={{alignItems: 'flex-end',width: '83%', backgorundColor:'red' }}>
     <Row>
         <Col>
@@ -58,7 +42,7 @@ function Table() {
                         searchLabel="Procurar"
                         infoLabel={["Mostrando", "até", "de", "resultados"]}
                         paginationLabel={["Anterior", "Próximo"]}
-                        data={state.data}
+                        data={data}
                         >
                     </MDBDataTable>  
                 </CardBody>
@@ -66,7 +50,6 @@ function Table() {
         </Col>
     </Row>
     </Container>
-    // </Router>
         )
  }
 
