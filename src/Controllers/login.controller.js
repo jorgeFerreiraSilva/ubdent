@@ -17,6 +17,10 @@ function Login () {
     console.log(state.users.isAuthenticated)
   },[])
 
+  useEffect(()=> {
+    console.log('actiooooooons', actions)
+  },[])
+
    const handleSubmit = (event) => {
         try {
         event.preventDefault()
