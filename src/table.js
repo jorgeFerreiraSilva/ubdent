@@ -10,7 +10,7 @@ import { object } from 'prop-types'
 
 function Table() {
     const history = useHistory()
-    const [ state ] = useGlobal()
+    const [ state, actions ] = useGlobal()
     // const data = {
     //     columns: [
          
@@ -19,22 +19,25 @@ function Table() {
     //     ]
     //   }
       // let btnItens = data.foreach(() =>{ <MDBBtn rounded color="info">Info</MDBBtn> })
-      const button = { button: <MDBBtn rounded color="info" onClick={() => history.push('/form')}>Edit</MDBBtn> }
-      // const data = state.data.rows.map((item) => {
-      //     // item['button'] = button
-      //     return item.button = <MDBBtn rounded color="info" onClick={() => history.push('/form')}>Edit</MDBBtn>
-      //     return {
-      //        button: <MDBBtn rounded color="info" onClick={() => history.push('/form')}>Edit</MDBBtn>,
-      //        name: item.name,
-      //        position: item.position,
-      //        office: item.office,
-      //        age: item.age,
-      //        date: item.date,
-      //        salary: item.salary }
-      //        
-      // })
-      console.log(state.data)
-      // console.log('data alone', data)
+    //   const button = { button: <MDBBtn rounded color="info" onClick={() => history.push('/form')}>Edit</MDBBtn> }
+
+    // const escolha2 = services.reduce((acc, item) => {
+    //     const mapper = { name: item.nome, id: item.carrierId }
+    //     acc.push(mapper)
+    //     return acc
+    //     // return { name: item.nome, carrierId: acc.carrierId }  //{ nome: acc.nome, id: acc.carrierId }
+    //    }, [])
+
+      const data = state.data.rows.map((item) => {
+        return (
+         item.button = <MDBBtn rounded color="info" onClick={() => history.push('/form')}>Edit</MDBBtn>
+         )
+    }, [])
+    
+    // actions.updateUsersState('data   ', { ...state.data.rows, rows: mapper })
+
+      console.log('data from state', state.data)
+      console.log('data alone in the function', data)
  return (
   //  <Router>
     <Container style={{alignItems: 'flex-end',width: '83%', backgorundColor:'red' }}>
