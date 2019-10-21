@@ -1,12 +1,17 @@
 import usersState from './users.state'
 import dataState from './data.state'
+import servicesState from './services.state'
 
 const initialState = {
-  environment: {
-    dev: 'https://.com/'
-  },
+  config:{
+  api: {
+    baseURL: 'https://viniciusnovo.dev:19387/',
+    key: '1e8bbcf1-894e-4147-9a76-0be5c566cde1'
+  }
+},
   users: usersState,
-  data: dataState
+  data: dataState,
+  services: servicesState
 }
 
 export default initialState
