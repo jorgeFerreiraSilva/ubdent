@@ -18,7 +18,7 @@ function Login () {
   },[])
 
   useEffect(()=> {
-    console.log('actiooooooons', actions)
+    actions.getUsers()
   },[])
 
    const handleSubmit = (event) => {

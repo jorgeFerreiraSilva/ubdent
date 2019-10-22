@@ -6,6 +6,7 @@
     "@material-ui/core": "^4.4.3",
     "@material-ui/icons": "^4.4.3",
     "axios": "^0.19.0",
+    "global": "^4.4.0",
     "material-table": "^1.51.0",
     "mdbreact": "git+https://oauth2:EBvQv4ut6i1DD7-SxGw4@git.mdbootstrap.com/mdb/react/re-pro.git#4.9.0",
     "react": "^16.10.1",
