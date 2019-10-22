@@ -1,5 +1,5 @@
-import React, {Component} from "react"
-// import {withRouter} from 'react-router-dom'
+import React, { useEffect } from "react"
+import { useHistory } from 'react-router-dom'
 import {
     MDBContainer,
     MDBRow,
@@ -13,10 +13,15 @@ import {
     MDBInput
   } from "mdbreact"
 import 'moment/locale/pt-br'
+import useGlobal from '../Store'
 
 
 function FormProduto () {
-
+      const [, actions] = useGlobal()
+      const history = useHistory()
+      useEffect(() => {
+        actions.getOneUser(history.location.state.cpf)
+      }, [])
         return (
             <>
     <MDBContainer

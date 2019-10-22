@@ -19,7 +19,7 @@ function Table({ rows }) {
     
     const dataRows = rows.map((item) => {
         item = {
-            button: <MDBBtn rounded color="info" onClick={() => history.push(`/form`)}>Detalhes</MDBBtn>,
+            button: <MDBBtn rounded color="info" onClick={() => history.push({ pathname:'/form', state: { cpf: item.cpf } })}>Detalhes</MDBBtn>,
             name: item.name,
             cpf: item.cpf,
             email: item.email,

@@ -6,7 +6,12 @@ const servicesState = {
       getUsers: {
           method: 'get',
           endpoint: 'ubdent/v0/anamnese'
+      },
+      getOneUser: {
+          method: 'get',
+          endpoint: 'ubdent/v0/anamnese/{{CPF}}'
       }
+
 }
 
 export default servicesState

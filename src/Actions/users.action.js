@@ -60,3 +60,23 @@ try {
   console.log(error)
 }
 }
+export const getOneUser = async (store, document = 32678000800) => {
+try {
+  const { config, services } = store.state
+  const axiosConfig = {
+    method: services.getOneUser.method,
+    baseURL: config.api.baseURL,
+    url: services.getOneUser.endpoint.replace('{{CPF}}', document),
+    headers: {
+      API_KEY: config.api.key,
+      "Access-Control-Allow-Origin": "*"
+    },
+  }
+   console.warn( await axios.request(axiosConfig)
+    .then(response => [null, response])
+    .catch(error => [error])
+   )
+} catch (error) {
+  console.log(error)
+}
+}
