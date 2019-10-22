@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import useGlobal from '../Store'
 import DashboardScreen from '../Screens/dashboard.screen'
+import Loading from '../loading'
 
 function Dashboard () {
   const [state, actions ] = useGlobal()
-  const [localState, localSetState] = useState({ rows: [] })
+  const [localState, localSetState] = useState({ 
+    rows: []
+  })
 
   console.log('state do sidenav', state)
 
@@ -20,6 +23,7 @@ function Dashboard () {
     try {
     const [error, response] = await actions.getUsers()
       if (response) {
+        console.log(response.data)
         console.log(response.data.data)
         console.log(response.data )
         localSetState({ rows: response.data.data })
@@ -32,7 +36,7 @@ function Dashboard () {
   useEffect(()=> {
     if(localState.rows.length === 0 ){
       getUsers()
-    }
+    } 
   },[])
 
   const handlers = {
@@ -40,7 +44,7 @@ function Dashboard () {
   }
 
   return (
-    <DashboardScreen handlers={handlers} rows={localState.rows} />
+  <DashboardScreen handlers={handlers} rows={localState.rows} />
   )
 }
 
