@@ -1,5 +1,4 @@
 import React from 'react'
-// import { isAuthenticated } from './auth'
 import Login from './Controllers/login.controller'
 import Dashboard from './Controllers/dashboard.controller'
 import {
@@ -27,7 +26,6 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
   )
 }
 const Routes = () => {
-  const [state] = useGlobal()
   return(
   <Router>
     <Switch>

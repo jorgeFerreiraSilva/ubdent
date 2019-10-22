@@ -1,18 +1,25 @@
 
-import React, { Fragment } from 'react'
+import React, { useState, useEffect } from 'react'
 import {MDBDataTable, Container, Row, Col, Card, CardHeader, CardBody, Fa, MDBBtn} from 'mdbreact'
 // import { Messages } from '../../components/Layout/Messages'
 import { useHistory } from 'react-router-dom'
 import useGlobal from './Store'
+import Loading from './loading'
 
 function Table({ rows }) {
     const history = useHistory()
     const [ state ] = useGlobal()
     const { columns } = state.data
+    const [localState, setLocalState] = useState({ loading: true })
+
+    useEffect(() => {
+        if (rows.length !== 0) setLocalState({ loading: false })
+        else setLocalState({ loading: true })
+      }, [rows])
     
     const dataRows = rows.map((item) => {
         item = {
-            button: <MDBBtn rounded color="info" onClick={() => history.push('/form')}>Detalhes</MDBBtn>,
+            button: <MDBBtn rounded color="info" onClick={() => history.push(`/form`)}>Detalhes</MDBBtn>,
             name: item.name,
             cpf: item.cpf
         }
@@ -36,7 +43,9 @@ function Table({ rows }) {
                     <div/>
                 </CardHeader>
                 <CardBody cascade>
-                    <MDBDataTable
+                {(localState.loading) 
+                    ? <Loading />
+                    : <MDBDataTable
                         exportToCSV
                         responsive
                         striped
@@ -47,8 +56,8 @@ function Table({ rows }) {
                         infoLabel={["Mostrando", "até", "de", "resultados"]}
                         paginationLabel={["Anterior", "Próximo"]}
                         data={tableData}
-                        >
-                    </MDBDataTable>  
+                        > 
+                    </MDBDataTable> }
                 </CardBody>
             </Card>
         </Col>
