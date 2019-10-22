@@ -11,7 +11,7 @@ import {
 } from 'mdbreact';
 import Table from '../table'
 
-const DashboardScreen = () => {
+const DashboardScreen = ({ rows }) => {
   // state = {
   //   sideNavLeft: false,
   //   sideNavRight: false
@@ -33,8 +33,7 @@ const DashboardScreen = () => {
         justifyContent: 'flex-end'
       }}
     >
-      <Table />
-      <MDBSideNav
+      {/* <MDBSideNav
         slim
         fixed
         mask="rgba-blue-strong"
@@ -53,23 +52,24 @@ const DashboardScreen = () => {
         </li>
         <MDBSideNavNav>
            <a href="#">
-              {/* <img alt="" src="https://mdbootstrap.com/img/Photos/Avatars/img%20(10).jpg" className="rounded-circle" /> */}
+              {/* <img alt="" src="https://mdbootstrap.com/img/Photos/Avatars/img%20(10).jpg" className="rounded-circle" /> }
               <span style={{ alignSelf: 'center' }}>Logo Ubdent</span>
             </a>
            <a href="#">
-              {/* <img alt="" src="https://mdbootstrap.com/img/Photos/Avatars/img%20(10).jpg" className="rounded-circle" /> */}
+              {/* <img alt="" src="https://mdbootstrap.com/img/Photos/Avatars/img%20(10).jpg" className="rounded-circle" /> }
               <span style={{ alignSelf: 'center' }}>Logo Ubdent</span>
             </a>
            <a href="#">
-              {/* <img alt="" src="https://mdbootstrap.com/img/Photos/Avatars/img%20(10).jpg" className="rounded-circle" /> */}
+              {/* <img alt="" src="https://mdbootstrap.com/img/Photos/Avatars/img%20(10).jpg" className="rounded-circle" /> }
               <span style={{ alignSelf: 'center' }}>Logo Ubdent</span>
             </a>
           {/* <MDBSideNavLink to="#" topLevel>
               <MDBIcon icon="pencil-alt" className="mr-2" />
               Anamneses
-          </MDBSideNavLink> */}
+          </MDBSideNavLink> }
         </MDBSideNavNav>
-      </MDBSideNav>
+      </MDBSideNav> */}
+      <Table rows={rows} />
     </MDBContainer>
   )
   // }

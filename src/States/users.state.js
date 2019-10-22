@@ -3,7 +3,8 @@ const usersState = {
   username: '',
   token: '',
   password: '',
-  isAuthenticated: false
+  isAuthenticated: false,
+  rows: []
 }
 
 export default usersState
