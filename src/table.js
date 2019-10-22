@@ -12,6 +12,8 @@ function Table({ rows }) {
     const { columns } = state.data
     const [localState, setLocalState] = useState({ loading: true })
 
+
+
     useEffect(() => {
         if (rows.length !== 0) setLocalState({ loading: false })
         else setLocalState({ loading: true })
@@ -19,7 +21,7 @@ function Table({ rows }) {
     
     const dataRows = rows.map((item) => {
         item = {
-            button: <MDBBtn rounded color="info" onClick={() => history.push({ pathname:'/form', state: { cpf: item.cpf } })}>Detalhes</MDBBtn>,
+            button: <MDBBtn rounded color="info" onClick={() => history.push({ pathname:`/anamnese/${item.cpf}` })}>Detalhes</MDBBtn>,
             name: item.name,
             cpf: item.cpf,
             email: item.email,

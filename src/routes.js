@@ -37,7 +37,7 @@ const Routes = () => {
         path='/anamneses'
         component={ () =>  <Dashboard /> } />
       <PrivateRoute
-       path='/form'
+       path='/anamnese/:cpf'
        component={ () => <FormProduto /> } />
     </Switch>
   </Router>

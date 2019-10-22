@@ -72,7 +72,7 @@ try {
       "Access-Control-Allow-Origin": "*"
     },
   }
-   console.warn( await axios.request(axiosConfig)
+   console.log( await axios.request(axiosConfig)
     .then(response => [null, response])
     .catch(error => [error])
    )

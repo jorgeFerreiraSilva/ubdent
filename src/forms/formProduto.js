@@ -1,5 +1,5 @@
 import React, { useEffect } from "react"
-import { useHistory } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import {
     MDBContainer,
     MDBRow,
@@ -18,9 +18,16 @@ import useGlobal from '../Store'
 
 function FormProduto () {
       const [, actions] = useGlobal()
-      const history = useHistory()
+      const params = useParams()
+
+     // const resolver = file => {
+    //     if(file.fileFormat === "wav") return <audio src={file.url} />
+    //     if(file.fileFormat === "jpg") return <img src={file.url} />
+    //     return <div>WHOUU</div>
+    // }
+
       useEffect(() => {
-        actions.getOneUser(history.location.state.cpf)
+        actions.getOneUser(params.cpf)
       }, [])
         return (
             <>
@@ -127,6 +134,7 @@ function FormProduto () {
         </MDBCol>
       </MDBRow>
     </MDBContainer>
+
     <MDBContainer
     style={{
         marginTop: '6%',
@@ -145,8 +153,9 @@ function FormProduto () {
               </MDBCardHeader>
               <form>
                 <div className="grey-text">
-                <MDBRow>  
-                <MDBCol md="6">  
+                <MDBRow>
+                  {/* {item.map(file => resolver(file) } */}
+                <MDBCol md="6">
                   <MDBInput
                     label="Type your email"
                     icon="envelope"
