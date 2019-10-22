@@ -5,20 +5,26 @@ import {MDBDataTable, Container, Row, Col, Card, CardHeader, CardBody, Fa, MDBBt
 import { useHistory } from 'react-router-dom'
 import useGlobal from './Store'
 
-function Table() {
+function Table({ rows }) {
     const history = useHistory()
     const [ state ] = useGlobal()
-
-    const { data } = state
-
-      const dataRows = data.rows.map((item) => {
-            item = {
-             button: <MDBBtn rounded color="info" onClick={() => history.push('/form')}>Edit</MDBBtn>,
-            ...item
-            }
-            return item
-      })
- data.rows = dataRows
+    const { columns } = state.data
+    
+    const dataRows = rows.map((item) => {
+        item = {
+            button: <MDBBtn rounded color="info" onClick={() => history.push('/form')}>Detalhes</MDBBtn>,
+            name: item.name,
+            cpf: item.cpf,
+            email: item.email,
+            telefone: item.telefone
+        }
+        return item
+    })
+    
+    const tableData = {
+        columns,
+        rows: dataRows
+    }
 
  return (
     <Container style={{alignItems: 'flex-end',width: '83%', backgorundColor:'red' }}>
@@ -42,7 +48,7 @@ function Table() {
                         searchLabel="Procurar"
                         infoLabel={["Mostrando", "até", "de", "resultados"]}
                         paginationLabel={["Anterior", "Próximo"]}
-                        data={data}
+                        data={tableData}
                         >
                     </MDBDataTable>  
                 </CardBody>

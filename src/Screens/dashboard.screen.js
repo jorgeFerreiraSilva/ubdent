@@ -1,30 +1,11 @@
-import React, { Component } from 'react'
-import { BrowserRouter as Router } from 'react-router-dom'
+import React from 'react'
 import {
-  MDBSideNavCat,
-  MDBSideNavNav,
-  MDBSideNav,
-  MDBSideNavLink,
   MDBContainer,
-  MDBIcon,
-  MDBBtn
 } from 'mdbreact';
 import Table from '../table'
 
-const DashboardScreen = () => {
-  // state = {
-  //   sideNavLeft: false,
-  //   sideNavRight: false
-  // };
+const DashboardScreen = ({ rows }) => {
 
-  // sidenavToggle = sidenavId => () => {
-  //   const sidenavNr = `sideNav${sidenavId}`;
-  //   this.setState({
-  //     [sidenavNr]: !this.state[sidenavNr]
-  //   });
-  // };
-
-  // render() {
   return (
     <MDBContainer
       style={{
@@ -33,8 +14,7 @@ const DashboardScreen = () => {
         justifyContent: 'flex-end'
       }}
     >
-      <Table />
-      <MDBSideNav
+      {/* <MDBSideNav
         slim
         fixed
         mask="rgba-blue-strong"
@@ -53,26 +33,26 @@ const DashboardScreen = () => {
         </li>
         <MDBSideNavNav>
            <a href="#">
-              {/* <img alt="" src="https://mdbootstrap.com/img/Photos/Avatars/img%20(10).jpg" className="rounded-circle" /> */}
+              {/* <img alt="" src="https://mdbootstrap.com/img/Photos/Avatars/img%20(10).jpg" className="rounded-circle" /> }
               <span style={{ alignSelf: 'center' }}>Logo Ubdent</span>
             </a>
            <a href="#">
-              {/* <img alt="" src="https://mdbootstrap.com/img/Photos/Avatars/img%20(10).jpg" className="rounded-circle" /> */}
+              {/* <img alt="" src="https://mdbootstrap.com/img/Photos/Avatars/img%20(10).jpg" className="rounded-circle" /> }
               <span style={{ alignSelf: 'center' }}>Logo Ubdent</span>
             </a>
            <a href="#">
-              {/* <img alt="" src="https://mdbootstrap.com/img/Photos/Avatars/img%20(10).jpg" className="rounded-circle" /> */}
+              {/* <img alt="" src="https://mdbootstrap.com/img/Photos/Avatars/img%20(10).jpg" className="rounded-circle" /> }
               <span style={{ alignSelf: 'center' }}>Logo Ubdent</span>
             </a>
           {/* <MDBSideNavLink to="#" topLevel>
               <MDBIcon icon="pencil-alt" className="mr-2" />
               Anamneses
-          </MDBSideNavLink> */}
+          </MDBSideNavLink> }
         </MDBSideNavNav>
-      </MDBSideNav>
+      </MDBSideNav> */}
+      <Table rows={rows} />
     </MDBContainer>
   )
-  // }
-};
+}
 
 export default DashboardScreen
