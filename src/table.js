@@ -21,7 +21,7 @@ function Table({ rows }) {
     
     const dataRows = rows.map((item) => {
         item = {
-            button: <MDBBtn rounded color="info" onClick={() => history.push({ pathname:`/anamnese/${item.cpf}` })}>Detalhes</MDBBtn>,
+            button: <MDBBtn rounded color="gradient-card-header blue-gradient" onClick={() => history.push({ pathname:`/anamnese/${item.cpf}` })}>Detalhes</MDBBtn>,
             name: item.name,
             cpf: item.cpf,
             email: (item.anamnese.medicalData[0]) ? item.anamnese.medicalData[0].email : null,

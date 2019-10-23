@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { useParams } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 import {
     MDBContainer,
     MDBRow,
@@ -10,6 +10,8 @@ import {
     MDBIcon,
     MDBCardHeader,
     MDBBtn,
+    Button,
+    Fa,
     MDBInput
   } from "mdbreact"
 import 'moment/locale/pt-br'
@@ -19,6 +21,7 @@ import useGlobal from '../Store'
 function FormProduto () {
       const [, actions] = useGlobal()
       const params = useParams()
+      const history = useHistory()
       const [localState, localSetState] = useState({
         name: '',
         cpf: '',
@@ -27,7 +30,7 @@ function FormProduto () {
 
      const resolver = file => {
         if(file.fileFormat === "wav") return <audio controls style={{ alignSelf: 'center', justifySelf: 'center', outline: 0 }}  key={file.fileName} src={file.url} />
-        if(file.fileFormat === "jpg") return <img width={250} height={250} style={{marginLeft: 15}} key={file.fileName} src={file.url} />
+        if(file.fileFormat === "jpg") return <a href={file.url} target='_blank' ><img class="link_thumb" width={250} height={250} style={{marginLeft: 15}} key={file.fileName} src={file.url} /></a>
         return false
     }
 
@@ -97,12 +100,16 @@ function FormProduto () {
         <MDBCol md="12">
           <MDBCard>
             <MDBCardBody>
-              <MDBCardHeader className="form-header deep-blue-gradient rounded">
+              <MDBCardHeader className="form-header gradient-card-header blue-gradient rounded">
                 <h3 className="my-3">
                   <MDBIcon icon="lock" /> Detalhes Do Paciente:
                 </h3>
               </MDBCardHeader>
-              <form>
+              <form onSubmit={(event) => { 
+                event.preventDefault()
+                history.push('/anamneses')
+              }
+              }>
                 <div className="grey-text">
                 <MDBRow>  
                 <MDBCol md="6">  
@@ -126,11 +133,7 @@ function FormProduto () {
                     label="Email"
                     icon="envelope"
                     value={localState.email}
-                    group
-                    type="email"
-                    validate
-                    error="wrong"
-                    success="right"
+
                   />
                 </MDBCol> 
                 <MDBCol md="6">  
@@ -138,8 +141,6 @@ function FormProduto () {
                     label="dia de nascimento"
                     icon="lock"
                     value={localState.birthDay}
-                    group
-                    validate
                   />
                 </MDBCol>  
                 </MDBRow>
@@ -265,20 +266,13 @@ function FormProduto () {
                 </MDBCol> 
                 <MDBCol md="6">  
                   <MDBInput
-                    label="Toma Medicamentos?"
-                    icon="lock"
-                    value={(localState.takeMedication === true) ? 'sim' : 'nāo'}
-                  />
-                </MDBCol>
-                </MDBRow>
-                <MDBRow>
-                <MDBCol md="6">  
-                  <MDBInput
                     label="tem alergia?"
                     icon="envelope"
                     value={(localState.haveAllergy === true) ? 'sim' : 'nāo'}
                   />
                 </MDBCol> 
+                </MDBRow>
+                <MDBRow>
                 <MDBCol md="6">  
                   <MDBInput
                     label="Detalhes da Alergia"
@@ -286,8 +280,6 @@ function FormProduto () {
                     value={localState.haveAllergyDetails}
                   />
                 </MDBCol>
-                </MDBRow>
-                <MDBRow>
                 <MDBCol md="6">  
                   <MDBInput
                     label="Pressāo baixa?"
@@ -295,6 +287,9 @@ function FormProduto () {
                     value={(localState.lowPressure === true) ? 'sim' : 'nāo'}
                   />
                 </MDBCol> 
+                </MDBRow>
+                <MDBRow>
+              
                 <MDBCol md="6">  
                   <MDBInput
                     label="Pressāo normal?"
@@ -302,15 +297,16 @@ function FormProduto () {
                     value={(localState.normalPressure === true) ? 'sim' : 'nāo'}
                   />
                 </MDBCol>
-                </MDBRow>
-                <MDBRow>
                 <MDBCol md="6">  
                   <MDBInput
                     label="Pressāo Alta?"
                     icon="envelope"
                     value={(localState.highPressure === true) ? 'sim' : 'nāo'}
                   />
-                </MDBCol> 
+                </MDBCol>
+                </MDBRow>
+                <MDBRow>
+                 
                 <MDBCol md="6">  
                   <MDBInput
                     label="diabetes?"
@@ -318,8 +314,6 @@ function FormProduto () {
                     value={(localState.diabetes === true) ? 'sim' : 'nāo'}
                   />
                 </MDBCol>
-                </MDBRow>
-                <MDBRow>
                 <MDBCol md="6">  
                   <MDBInput
                     label="Problema de coração?"
@@ -327,6 +321,8 @@ function FormProduto () {
                     value={(localState.hearthProblem === true) ? 'sim' : 'nāo'}
                   />
                 </MDBCol> 
+                </MDBRow>
+                <MDBRow>
                 <MDBCol md="6">  
                   <MDBInput
                     label="grávida?"
@@ -338,13 +334,9 @@ function FormProduto () {
                 </div>
 
               <div className="text-center mt-4">
-                <MDBBtn
-                  color="light-blue"
-                  className="mb-3"
-                  type="submit"
-                >
-                  Salvar
-                </MDBBtn>
+                <div className="text-center py-4 mt-3">
+                  <Button color="gradient-card-header blue-gradient" type="submit">Salvar<Fa icon="sign-in" /></Button>
+                </div>
               </div>
               </form>
               <MDBModalFooter>
@@ -366,7 +358,7 @@ function FormProduto () {
         <MDBCol md="12">
           <MDBCard>
             <MDBCardBody>
-              <MDBCardHeader className="form-header deep-blue-gradient rounded">
+              <MDBCardHeader className="form-header gradient-card-header blue-gradient rounded">
                 <h3 className="my-3">
                   <MDBIcon icon="lock" /> Arquivos Do Paciente:
                 </h3>
@@ -374,12 +366,10 @@ function FormProduto () {
               <form>
                 <div className="grey-text">
                 <MDBRow>
-                {/* <MDBCol md="12" style={{alignItems: 'center', justifyContent: 'space-between', backgroundColor: 'blue'}}> */}
                   {(localState.files !== null && localState.files !== undefined) 
                     ?localState.files.map(file => resolver(file))
                     : null
                    }
-                {/* </MDBCol>    */}
                 </MDBRow>
                 </div>
               </form>

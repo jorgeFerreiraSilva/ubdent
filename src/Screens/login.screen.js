@@ -1,14 +1,9 @@
 import React, { Fragment, useEffect } from 'react'
-// import { withRouter } from 'react-router-dom'
 
 import Messages from '../messages'
 
 import {Container, Row, Col, Card, CardBody, Input, Button, Fa} from 'mdbreact'
-// import Loading from './loading'
-import { Link, Redirect } from "react-router-dom"
 
-import useInputState from '../useInputState'
-import useToggle from '../useToggle'
 import useGlobal from '../Store'
 
 
@@ -33,7 +28,7 @@ function LoginScreen({ handlers }) {
                                             <Input label="Senha" name="senha" id="senha" onChange={handlers.updateSenha} icon="lock" group type="password" validate required />
                                         </div>
                                         <div className="text-center py-4 mt-3">
-                                                <Button color="indigo" type="submit">Entrar <Fa icon="sign-in" /></Button>
+                                                <Button color="gradient-card-header blue-gradient" type="submit">Entrar <Fa icon="sign-in" /></Button>
                                         </div>
                                         <div className="text-center py-4 mt-3">
                                         </div>
