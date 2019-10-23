@@ -24,8 +24,8 @@ function Table({ rows }) {
             button: <MDBBtn rounded color="gradient-card-header blue-gradient" onClick={() => history.push({ pathname:`/anamnese/${item.cpf}` })}>Detalhes</MDBBtn>,
             name: item.name,
             cpf: item.cpf,
-            email: (item.anamnese.medicalData[0]) ? item.anamnese.medicalData[0].email : null,
-            telefone: (item.anamnese.medicalData[0]) ? item.anamnese.medicalData[0].phone : null
+            email: (item.anamnese.medicalData[0]) ? item.anamnese.medicalData[0].email : '',
+            telefone: (item.anamnese.medicalData[0]) ? item.anamnese.medicalData[0].phone : ''
         }
         return item
     })
@@ -61,7 +61,8 @@ function Table({ rows }) {
                         paginationLabel={["Anterior", "Próximo"]}
                         data={tableData}
                         > 
-                    </MDBDataTable> }
+                    </MDBDataTable>
+                 }
                 </CardBody>
             </Card>
         </Col>
