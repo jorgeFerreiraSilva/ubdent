@@ -15,7 +15,7 @@ const DashboardScreen = ({ rows }) => {
       }}
     >
  
-       <Table rows={rows} />
+    <Table rows={rows} />
     </MDBContainer>
   )
 }

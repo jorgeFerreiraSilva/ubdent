@@ -24,8 +24,8 @@ function Table({ rows }) {
             button: <MDBBtn rounded color="info" onClick={() => history.push({ pathname:`/anamnese/${item.cpf}` })}>Detalhes</MDBBtn>,
             name: item.name,
             cpf: item.cpf,
-            email: item.email,
-            telefone: item.telefone
+            email: (item.anamnese.medicalData[0]) ? item.anamnese.medicalData[0].email : null,
+            telefone: (item.anamnese.medicalData[0]) ? item.anamnese.medicalData[0].phone : null
         }
         return item
     })

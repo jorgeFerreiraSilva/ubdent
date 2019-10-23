@@ -3,49 +3,43 @@ import useGlobal from '../Store'
 import DashboardScreen from '../Screens/dashboard.screen'
 import Loading from '../loading'
 
-function Dashboard () {
-  const [state, actions ] = useGlobal()
-  const [localState, localSetState] = useState({ 
+function Dashboard() {
+  const [state, actions] = useGlobal();
+  const [localState, localSetState] = useState({
     rows: []
-  })
-
-  console.log('state do sidenav', state)
+  });
 
   const onChangeText = (property, value) => {
     try {
       actions.updateUsersState(property, value)
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   const getUsers = async () => {
     try {
-    const [error, response] = await actions.getUsers()
+      const [error, response] = await actions.getUsers();
+      console.log('ressssponsseeeee', response.data.data);
       if (response) {
-        console.log(response.data)
-        console.log(response.data.data)
-        console.log(response.data )
-        localSetState({ rows: response.data.data })
+        localSetState({ rows: response.data.data });
       }
-    } catch (error){
-    console.log(error)
+    } catch (error) {
+      console.log(error);
     }
-  }
+  };
 
-  useEffect(()=> {
-    if(localState.rows.length === 0 ){
-      getUsers()
-    } 
-  },[])
+  useEffect(() => {
+    if (localState.rows.length === 0) {
+      getUsers();
+    }
+  }, []);
 
   const handlers = {
     onChangeText
-  }
+  };
 
-  return (
-  <DashboardScreen handlers={handlers} rows={localState.rows} />
-  )
+  return <DashboardScreen handlers={handlers} rows={localState.rows} />
 }
 
-export default Dashboard
+export default Dashboard;
