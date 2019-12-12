@@ -452,6 +452,14 @@ function FormProduto () {
                           options={options}
                         />
                       </MDBCol>
+                      <MDBCol md='6'>
+                        <MDBInput
+                          label='Simtomas'
+                          icon='lock'
+                          value={localState.medicalData.symtoms}
+                          onChange={e => updater(e.target.value, 'symtoms')}
+                        />
+                      </MDBCol>
                     </MDBRow>
                   </div>
 
