@@ -26,9 +26,8 @@ function LoginScreen ({ handlers }) {
                     <Input label='Email' name='email' id='email' onChange={handlers.updateEmail} icon='envelope' group type='email' validate error='wrong' success='right' required />
                     <Input label='Senha' name='senha' id='senha' onChange={handlers.updateSenha} icon='lock' group type='password' validate required />
                   </div>
-                  {/* <a href={'/signup'}><div>cadastre-se</div></a> */}
                   <div className='text-center py-4 mt-3'>
-                    <Button color='gradient-card-header blue-gradient' type='submit'>Entrar <Fa icon='sign-in' /></Button>
+                    <Button color='gradient-card-header blue-gradient' type='submit'>cadastrar <Fa icon='sign-in' /></Button>
                   </div>
                   <div className='text-center py-4 mt-3' />
                 </form>
