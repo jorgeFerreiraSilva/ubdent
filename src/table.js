@@ -72,7 +72,7 @@ function Table ({ rows }) {
     item = {
       button: <MDBBtn rounded color='gradient-card-header blue-gradient' onClick={() => handleContinue(item, dataBefore)}>Detalhes</MDBBtn>,
       name: correctItem(item, 'name'),
-      cpf: correctItem(item, 'name'),
+      cpf: correctItem(item, 'document'),
       email: (!item.anamnese.medicalData || item.anamnese.medicalData.length === 0) ? item.email : (item.anamnese.medicalData[item.anamnese.medicalData.length - 1]) ? item.anamnese.medicalData[item.anamnese.medicalData.length - 1].email : '',
       telefone: (!item.anamnese.medicalData || item.anamnese.medicalData.length === 0) ? item.phone : (item.anamnese.medicalData[item.anamnese.medicalData.length - 1]) ? item.anamnese.medicalData[item.anamnese.medicalData.length - 1].phone : '',
       lastVisit: (!item.anamnese.medicalData || item.anamnese.medicalData.length === 0) ? rightChoose(item.lastVisit) : (item.anamnese.medicalData[item.anamnese.medicalData.length - 1]).toString() ? rightChoose(item.anamnese.medicalData[item.anamnese.medicalData.length - 1].lastVisit) : '',
