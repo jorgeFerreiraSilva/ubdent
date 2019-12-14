@@ -89,8 +89,7 @@ const dataState = {
       label: 'Sintomas',
       field: 'Sintomas',
       sort: 'asc'
-    },
-    
+    }
   ]
 }
 

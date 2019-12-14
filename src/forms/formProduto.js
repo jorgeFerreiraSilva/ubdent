@@ -68,16 +68,21 @@ function FormProduto () {
     }
   }
   
-  const [, actions] = useGlobal()
+  const [state, actions] = useGlobal()
   const history = useHistory()
   const [localState, localSetState] = useState({
-    medicalData: (!location.state.anamnese.medicalData[location.state.anamnese.medicalData.length - 1]) ? '' : location.state.anamnese.medicalData[location.state.anamnese.medicalData.length - 1],
+    root: location.state.root,
+    medicalData: (location.state.anamnese.medicalData || location.state.anamnese.medicalData === undefined || location.state.anamnese.medicalData === undefined || !location.state.anamnese.medicalData[location.state.anamnese.medicalData.length - 1]) ? state.api.emptyMedicalData : location.state.anamnese.medicalData[location.state.anamnese.medicalData.length - 1],
     files: location.state.anamnese.files
   })
 
   useEffect(() => {
     console.log('localState', localState)
   }, [localState])
+
+  useEffect(() => {
+    console.log('LOCATION', location)
+  }, [])
 
   const options = [
     { value: true, label: 'Sim' },
@@ -156,7 +161,7 @@ function FormProduto () {
                       <MDBCol md='6'>
                         <MDBInput
                           label='Nome'
-                          value={localState.medicalData.name}
+                          value={(localState.medicalData && localState.medicalData.name !== '' ? localState.medicalData.name : localState.root.name)}
                           icon='envelope'
                           onChange={(e) => updater(e.target.value, 'name')}
                         />
@@ -165,7 +170,7 @@ function FormProduto () {
                         <MDBInput
                           label='CPF'
                           icon='lock'
-                          value={localState.medicalData.document}
+                          value={localState.medicalData && localState.medicalData.document !== '' ? localState.medicalData.document : localState.root.document}
                           onChange={e => updater(e.target.value, 'document')}
                         />
                       </MDBCol>
@@ -454,7 +459,7 @@ function FormProduto () {
                       </MDBCol>
                       <MDBCol md='6'>
                         <MDBInput
-                          label='Simtomas'
+                          label='Sintomas'
                           icon='lock'
                           value={localState.medicalData.symtoms}
                           onChange={e => updater(e.target.value, 'symtoms')}

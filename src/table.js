@@ -19,16 +19,17 @@ function Table ({ rows }) {
 
   useEffect(() => {
     console.log('state empty', state.api.medicalData[0])
+    console.log('state emptyMedicalData', state.api.emptyMedicalData)
   }, [])
 
-  const handleContinue = async (item, dataBefore) => {
+  const handleContinue = async (anamneseBefore, dataBefore) => {
     try {
-      console.log('item', item)
-      const finalData = { ...dataBefore, item }
+      console.log('ANAMNESE BEFORE', anamneseBefore)
+      console.log('DATA BEFORE', dataBefore)
       history.push({
-        pathname: `/anamnese/${dataBefore.medicalData[dataBefore.medicalData - 1]}`,
+        pathname: `/anamnese/${dataBefore.cpf}`,
         state: {
-          // item: item,
+          root: { name: dataBefore.name, document: dataBefore.cpf },
           anamnese: dataBefore
         }
       })
@@ -54,7 +55,8 @@ function Table ({ rows }) {
 
   const correctItem = (item, property) => {
     try {
-      console.log('CORRECT NAME', item)
+      console.log('CORRECT NAME ITEM', item)
+      console.log('CORRECT NAME PROPERTY', property)
       if (item.anamnese.medicalData && item.anamnese.medicalData !== null && item.anamnese.medicalData !== undefined) {
         // if (item.anamnese.medicalData[item.anamnese.medicalData.length - 1][property] === '') return ''
         if (item.anamnese.medicalData.length === 0) return item[property]
@@ -66,13 +68,14 @@ function Table ({ rows }) {
   }
 
   const dataRows = rows.map((item) => {
-    const dataBefore = item.anamnese
+    const dataBefore = item
+    const anamneseBefore = item.anamnese
     console.log('DATA BEFORE', item.anamnese)
     console.log('ITEM COMPLETE', item)
     item = {
-      button: <MDBBtn rounded color='gradient-card-header blue-gradient' onClick={() => handleContinue(item, dataBefore)}>Detalhes</MDBBtn>,
-      name: correctItem(item, 'name'),
-      cpf: correctItem(item, 'document'),
+      button: <MDBBtn rounded color='gradient-card-header blue-gradient' onClick={() => handleContinue(anamneseBefore, dataBefore)}>Detalhes</MDBBtn>,
+      name: (!item.anamnese.medicalData || item.anamnese.medicalData.length === 0) ? item.name : (item.anamnese.medicalData[item.anamnese.medicalData.length - 1]) ? item.anamnese.medicalData[item.anamnese.medicalData.length - 1].name : 'NDF',
+      cpf: (!item.anamnese.medicalData || item.anamnese.medicalData.length === 0) ? dataBefore.cpf : (item.anamnese.medicalData[item.anamnese.medicalData.length - 1]) ? item.anamnese.medicalData[item.anamnese.medicalData.length - 1].document : 'NDF',
       email: (!item.anamnese.medicalData || item.anamnese.medicalData.length === 0) ? item.email : (item.anamnese.medicalData[item.anamnese.medicalData.length - 1]) ? item.anamnese.medicalData[item.anamnese.medicalData.length - 1].email : 'NDF',
       telefone: (!item.anamnese.medicalData || item.anamnese.medicalData.length === 0) ? item.phone : (item.anamnese.medicalData[item.anamnese.medicalData.length - 1]) ? item.anamnese.medicalData[item.anamnese.medicalData.length - 1].phone : 'NDF',
       lastVisit: (!item.anamnese.medicalData || item.anamnese.medicalData.length === 0) ? rightChoose(item.lastVisit) : (item.anamnese.medicalData[item.anamnese.medicalData.length - 1]).toString() ? rightChoose(item.anamnese.medicalData[item.anamnese.medicalData.length - 1].lastVisit) : 'NDF',
