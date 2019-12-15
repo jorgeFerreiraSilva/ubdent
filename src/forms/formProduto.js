@@ -19,28 +19,40 @@ import useGlobal from '../Store'
 import TextareaAutosize from '@material-ui/core/TextareaAutosize'
 
 function FormProduto () {
-  const params = useParams()
 
- const location = useLocation()
+  const correctDataResolver = () => {
+    try {
+      if (location.state.anamnese.anamnese.medicalData &&
+         location.state.anamnese.anamnese.medicalData.length === 0) {
+        const newData = { ...state.api.emptyMedicalData, ...location.state.root }
+        return newData
+      } else {
+        const newData = { ...state.api.emptyMedicalData, ...location.state.anamnese.anamnese.medicalData[location.state.anamnese.anamnese.medicalData.length - 1] }
+        return newData
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
-  // useEffect(() => {
-  //   console.log('usePARAMS', params)
-  //   console.log('usePARAMS', useParams)
-  //   console.log('useLocation', location)
-  //   console.log('useLocation', location)
-  // }, [])
+  // const params = useParams()
+  const location = useLocation()
+  const [state, actions] = useGlobal()
+  const history = useHistory()
+  const [localState, localSetState] = useState({
+    root: location.state.root,
+    medicalData: correctDataResolver(),
+    files: location.state.anamnese.files
+  })
 
-  // const getOneUser = async (document) => {
-  //   try {
-  //   const [error, response] = await actions.getOneUser(document)
-  //     if (response) {
-  //       const data = response.data.data
-  //       await localSetState({ ...localState, data })
-  //     }
-  //   } catch (error){
-  //   console.log(error)
-  //   }
-  // }
+  useEffect(() => {
+    // console.log('usePARAMS', params)
+    // console.log('usePARAMS', useParams)
+    correctDataResolver()
+    console.log('ANAMNESE', location.state.anamnese.anamnese)
+    console.log('useLocation ROOT', location.state.root)
+    // console.log('useLocation empty', state.api.emptyMedicalData)
+  }, [])
   const rightChoose = (value) => {
     try {
       if (value === true) return 'Sim'
@@ -56,25 +68,17 @@ function FormProduto () {
     }
   }
 
-  const correctItem = (item, property) => {
-    try {
-      console.log(test)
-      if (item.anamnese.medicalData !== null && item.anamnese.medicalData !== undefined) {
-        if (item.anamnese.medicalData.length === 0) return item[property]
-        if (item.anamnese.medicalData[item.anamnese.medicalData.length - 1]) return item.anamnese.medicalData[item.anamnese.medicalData.length - 1][property]
-      }
-    } catch (error) {
-      console.log(error)
-    }
-  }
-  
-  const [state, actions] = useGlobal()
-  const history = useHistory()
-  const [localState, localSetState] = useState({
-    root: location.state.root,
-    medicalData: (location.state.anamnese.medicalData || location.state.anamnese.medicalData === undefined || location.state.anamnese.medicalData === undefined || !location.state.anamnese.medicalData[location.state.anamnese.medicalData.length - 1]) ? state.api.emptyMedicalData : location.state.anamnese.medicalData[location.state.anamnese.medicalData.length - 1],
-    files: location.state.anamnese.files
-  })
+  // const correctItem = (item, property) => {
+  //   try {
+  //     console.log(test)
+  //     if (item.anamnese.medicalData !== null && item.anamnese.medicalData !== undefined) {
+  //       if (item.anamnese.medicalData.length === 0) return item[property]
+  //       if (item.anamnese.medicalData[item.anamnese.medicalData.length - 1]) return item.anamnese.medicalData[item.anamnese.medicalData.length - 1][property]
+  //     }
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
 
   useEffect(() => {
     console.log('localState', localState)
@@ -124,9 +128,7 @@ function FormProduto () {
   }
 
   const updater = (event, property) => {
-    // console.log('EVENTO', event)
     const medicalData = { ...localState.medicalData, [property]: event }
-    // console.log('newassign', medicalData)
     localSetState({ ...localState, medicalData })
   }
 
@@ -161,7 +163,7 @@ function FormProduto () {
                       <MDBCol md='6'>
                         <MDBInput
                           label='Nome'
-                          value={(localState.medicalData && localState.medicalData.name !== '' ? localState.medicalData.name : localState.root.name)}
+                          value={localState.medicalData.name}
                           icon='envelope'
                           onChange={(e) => updater(e.target.value, 'name')}
                         />
@@ -170,7 +172,7 @@ function FormProduto () {
                         <MDBInput
                           label='CPF'
                           icon='lock'
-                          value={localState.medicalData && localState.medicalData.document !== '' ? localState.medicalData.document : localState.root.document}
+                          value={localState.medicalData.document}
                           onChange={e => updater(e.target.value, 'document')}
                         />
                       </MDBCol>

@@ -24,8 +24,8 @@ function Table ({ rows }) {
 
   const handleContinue = async (anamneseBefore, dataBefore) => {
     try {
-      console.log('ANAMNESE BEFORE', anamneseBefore)
-      console.log('DATA BEFORE', dataBefore)
+      // console.log('ANAMNESE BEFORE', anamneseBefore)
+      // console.log('DATA BEFORE', dataBefore)
       history.push({
         pathname: `/anamnese/${dataBefore.cpf}`,
         state: {
@@ -53,21 +53,21 @@ function Table ({ rows }) {
     }
   }
 
-  const correctItem = (item, property) => {
-    try {
-      console.log('CORRECT NAME ITEM', item)
-      console.log('CORRECT NAME PROPERTY', property)
-      if (item.anamnese.medicalData && item.anamnese.medicalData !== null && item.anamnese.medicalData !== undefined) {
-        // if (item.anamnese.medicalData[item.anamnese.medicalData.length - 1][property] === '') return ''
-        if (item.anamnese.medicalData.length === 0) return item[property]
-        if (item.anamnese.medicalData[item.anamnese.medicalData.length - 1]) return item.anamnese.medicalData[item.anamnese.medicalData.length - 1][property]
-      } else return ''
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  // const correctItem = (item, property) => {
+  //   try {
+  //     console.log('CORRECT NAME ITEM', item)
+  //     console.log('CORRECT NAME PROPERTY', property)
+  //     if (item.anamnese.medicalData && item.anamnese.medicalData !== null && item.anamnese.medicalData !== undefined) {
+  //       // if (item.anamnese.medicalData[item.anamnese.medicalData.length - 1][property] === '') return ''
+  //       if (item.anamnese.medicalData.length === 0) return item[property]
+  //       if (item.anamnese.medicalData[item.anamnese.medicalData.length - 1]) return item.anamnese.medicalData[item.anamnese.medicalData.length - 1][property]
+  //     } else return ''
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
 
-  const dataRows = rows.map((item) => {
+  const dataRows = rows.map((item, key) => {
     const dataBefore = item
     const anamneseBefore = item.anamnese
     console.log('DATA BEFORE', item.anamnese)
