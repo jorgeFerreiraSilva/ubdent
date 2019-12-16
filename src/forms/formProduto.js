@@ -24,10 +24,14 @@ function FormProduto () {
     try {
       if (location.state.anamnese.anamnese.medicalData &&
          location.state.anamnese.anamnese.medicalData.length === 0) {
-        const newData = { ...state.api.emptyMedicalData, ...location.state.root }
+        const newData = { 
+          ...state.api.emptyMedicalData,
+           ...location.state.root }
         return newData
       } else {
-        const newData = { ...state.api.emptyMedicalData, ...location.state.anamnese.anamnese.medicalData[location.state.anamnese.anamnese.medicalData.length - 1] }
+        const newData = { 
+          ...state.api.emptyMedicalData,
+           ...location.state.anamnese.anamnese.medicalData[location.state.anamnese.anamnese.medicalData.length - 1] }
         return newData
       }
     } catch (error) {
