@@ -69,11 +69,11 @@ function Table ({ rows }) {
     }
   }
 
-  const dataRows = rows.map((item, key) => {
+  const dataRows = rows.map((item, index) => {
     const dataBefore = item
     const anamneseBefore = item.anamnese
-    console.log('DATA BEFORE', item.anamnese)
-    console.log('ITEM COMPLETE', item)
+    // console.log('DATA BEFORE', item.anamnese)
+    // console.log('ITEM COMPLETE', item)
     item = {
       button: <MDBBtn rounded color='gradient-card-header blue-gradient' onClick={() => handleContinue(anamneseBefore, dataBefore)}>Detalhes</MDBBtn>,
       name: (!item.anamnese.medicalData || item.anamnese.medicalData.length === 0) ? item.name.toString() : (item.anamnese.medicalData[item.anamnese.medicalData.length - 1]) ? item.anamnese.medicalData[item.anamnese.medicalData.length - 1].name.toString() : 'NDF',
@@ -93,6 +93,7 @@ function Table ({ rows }) {
       // hearthProblem: (!item.anamnese.medicalData || item.anamnese.medicalData.length === 0) ? rightChoose(item.hearthProblem).toString() : (item.anamnese.medicalData[item.anamnese.medicalData.length - 1]) ? rightChoose(item.anamnese.medicalData[item.anamnese.medicalData.length - 1].hearthProblem).toString() : 'NDF',
       // pregnant: (!item.anamnese.medicalData || item.anamnese.medicalData.length === 0) ? rightChoose(item.pregnant).toString() : (item.anamnese.medicalData[item.anamnese.medicalData.length - 1]) ? rightChoose(item.anamnese.medicalData[item.anamnese.medicalData.length - 1].pregnant).toString() : 'NDF',
       // symtoms: (!item.anamnese.medicalData || item.anamnese.medicalData.length === 0) ? item.symtoms.toString() : (item.anamnese.medicalData[item.anamnese.medicalData.length - 1]) ? item.anamnese.medicalData[item.anamnese.medicalData.length - 1].symtoms.toString() : 'NDF'
+      key: index,
       // telefone: (!item.anamnese.medicalData || item.anamnese.medicalData.length === 0) ? item.telefone : (item.anamnese.medicalData[item.anamnese.medicalData.length - 1]) ? item.anamnese.medicalData[item.anamnese.medicalData.length - 1].telefone : '',
       // telefone: (!item.anamnese.medicalData || item.anamnese.medicalData.length === 0) ? item.telefone : (item.anamnese.medicalData[item.anamnese.medicalData.length - 1]) ? item.anamnese.medicalData[item.anamnese.medicalData.length - 1].telefone : '',
       // telefone: (!item.anamnese.medicalData || item.anamnese.medicalData.length === 0) ? item.telefone : (item.anamnese.medicalData[item.anamnese.medicalData.length - 1]) ? item.anamnese.medicalData[item.anamnese.medicalData.length - 1].telefone : '',
