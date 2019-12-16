@@ -24,8 +24,6 @@ function Table ({ rows }) {
 
   const handleContinue = async (anamneseBefore, dataBefore) => {
     try {
-      // console.log('ANAMNESE BEFORE', anamneseBefore)
-      // console.log('DATA BEFORE', dataBefore)
       history.push({
         pathname: `/anamnese/${dataBefore.cpf}`,
         state: {
@@ -40,7 +38,6 @@ function Table ({ rows }) {
   }
   const rightChoose = (value) => {
     try {
-      /* console.log('VALUEEE',typeof value) */
       if (value === true) return 'Sim'
       if (value === false) return 'Não'
       if (value === 'male') return 'Masculino'
@@ -54,19 +51,23 @@ function Table ({ rows }) {
     }
   }
 
-  // const correctItem = (item, property) => {
-  //   try {
-  //     console.log('CORRECT NAME ITEM', item)
-  //     console.log('CORRECT NAME PROPERTY', property)
-  //     if (item.anamnese.medicalData && item.anamnese.medicalData !== null && item.anamnese.medicalData !== undefined) {
-  //       // if (item.anamnese.medicalData[item.anamnese.medicalData.length - 1][property] === '') return ''
-  //       if (item.anamnese.medicalData.length === 0) return item[property]
-  //       if (item.anamnese.medicalData[item.anamnese.medicalData.length - 1]) return item.anamnese.medicalData[item.anamnese.medicalData.length - 1][property]
-  //     } else return ''
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }
+  const dataRowResolver = (item, property) => {
+    try {
+      if (item.anamnese.medicalData &&
+         item.anamnese.medicalData.length !== 0) {
+           console.log('entrou1')
+          return item.anamnese.medicalData[item.anamnese.medicalData.length - 1][property]
+         }
+        //  else if (item.anamnese.medicalData &&
+        //   item.anamnese.medicalData.length !== 0 && (question === true)) {
+        //     console.log('entrou2')
+        //     return item.anamnese.medicalData[item.anamnese.medicalData.length - 1][property]
+        //   }
+         else return 'NDF'
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   const dataRows = rows.map((item, key) => {
     const dataBefore = item
@@ -77,21 +78,21 @@ function Table ({ rows }) {
       button: <MDBBtn rounded color='gradient-card-header blue-gradient' onClick={() => handleContinue(anamneseBefore, dataBefore)}>Detalhes</MDBBtn>,
       name: (!item.anamnese.medicalData || item.anamnese.medicalData.length === 0) ? item.name.toString() : (item.anamnese.medicalData[item.anamnese.medicalData.length - 1]) ? item.anamnese.medicalData[item.anamnese.medicalData.length - 1].name.toString() : 'NDF',
       cpf: (!item.anamnese.medicalData || item.anamnese.medicalData.length === 0) ? dataBefore.cpf.toString() : (item.anamnese.medicalData[item.anamnese.medicalData.length - 1]) ? item.anamnese.medicalData[item.anamnese.medicalData.length - 1].document.toString() : 'NDF',
-      email: (!item.anamnese.medicalData || item.anamnese.medicalData.length === 0) ? 'NDF' : (item.anamnese.medicalData[item.anamnese.medicalData.length - 1]) ? item.anamnese.medicalData[item.anamnese.medicalData.length - 1].email.toString() : '',
+      email: dataRowResolver(item, 'email'),
       telefone: (!item.anamnese.medicalData || item.anamnese.medicalData.length === 0) ? item.phone.toString() : (item.anamnese.medicalData[item.anamnese.medicalData.length - 1]) ? item.anamnese.medicalData[item.anamnese.medicalData.length - 1].phone.toString() : 'NDF',
-      lastVisit: (!item.anamnese.medicalData || item.anamnese.medicalData.length === 0) ? rightChoose(item.lastVisit) : (item.anamnese.medicalData[item.anamnese.medicalData.length - 1]) ? rightChoose(item.anamnese.medicalData[item.anamnese.medicalData.length - 1].lastVisit) : 'NDF',
-/*       dentistFear: (!item.anamnese.medicalData || item.anamnese.medicalData.length === 0) ? rightChoose(item.dentistFear).toString() : (item.anamnese.medicalData[item.anamnese.medicalData.length - 1]) ? rightChoose(item.anamnese.medicalData[item.anamnese.medicalData.length - 1].dentistFear).toString() : 'NDF',
-      doctorLastVisit: (!item.anamnese.medicalData || item.anamnese.medicalData.length === 0) ? rightChoose(item.doctorLastVisit).toString() : (item.anamnese.medicalData[item.anamnese.medicalData.length - 1]) ? rightChoose(item.anamnese.medicalData[item.anamnese.medicalData.length - 1].doctorLastVisit).toString() : 'NDF',
-      healthProblems: (!item.anamnese.medicalData || item.anamnese.medicalData.length === 0) ? rightChoose(item.healthProblems).toString() : (item.anamnese.medicalData[item.anamnese.medicalData.length - 1]) ? rightChoose(item.anamnese.medicalData[item.anamnese.medicalData.length - 1].healthProblems).toString() : 'NDF',
-      healthProblemsDetails: (!item.anamnese.medicalData || item.anamnese.medicalData.length === 0) ? item.healthProblemsDetails.toString() : (item.anamnese.medicalData[item.anamnese.medicalData.length - 1]) ? item.anamnese.medicalData[item.anamnese.medicalData.length - 1].healthProblemsDetails.toString() : '',
-      takeMedication: (!item.anamnese.medicalData || item.anamnese.medicalData.length === 0) ? rightChoose(item.takeMedication).toString() : (item.anamnese.medicalData[item.anamnese.medicalData.length - 1]) ? rightChoose(item.anamnese.medicalData[item.anamnese.medicalData.length - 1].takeMedication).toString() : 'NDF',
-      takeMedicationDetails: (!item.anamnese.medicalData || item.anamnese.medicalData.length === 0) ? item.takeMedicationDetails.toString() : (item.anamnese.medicalData[item.anamnese.medicalData.length - 1]) ? item.anamnese.medicalData[item.anamnese.medicalData.length - 1].takeMedicationDetails.toString() : 'NDF',
-      haveAllergy: (!item.anamnese.medicalData || item.anamnese.medicalData.length === 0) ? rightChoose(item.haveAllergy).toString() : (item.anamnese.medicalData[item.anamnese.medicalData.length - 1]) ? rightChoose(item.anamnese.medicalData[item.anamnese.medicalData.length - 1].haveAllergy).toString() : 'NDF',
-      haveAllergyDetails: (!item.anamnese.medicalData || item.anamnese.medicalData.length === 0) ? item.haveAllergyDetails.toString() : (item.anamnese.medicalData[item.anamnese.medicalData.length - 1]) ? item.anamnese.medicalData[item.anamnese.medicalData.length - 1].haveAllergyDetails.toString() : 'NDF',
-      diabetes: (!item.anamnese.medicalData || item.anamnese.medicalData.length === 0) ? rightChoose(item.diabetes.toString()) : (item.anamnese.medicalData[item.anamnese.medicalData.length - 1]) ? rightChoose(item.anamnese.medicalData[item.anamnese.medicalData.length - 1].diabetes).toString() : 'NDF',
-      hearthProblem: (!item.anamnese.medicalData || item.anamnese.medicalData.length === 0) ? rightChoose(item.hearthProblem).toString() : (item.anamnese.medicalData[item.anamnese.medicalData.length - 1]) ? rightChoose(item.anamnese.medicalData[item.anamnese.medicalData.length - 1].hearthProblem).toString() : 'NDF',
-      pregnant: (!item.anamnese.medicalData || item.anamnese.medicalData.length === 0) ? rightChoose(item.pregnant).toString() : (item.anamnese.medicalData[item.anamnese.medicalData.length - 1]) ? rightChoose(item.anamnese.medicalData[item.anamnese.medicalData.length - 1].pregnant).toString() : 'NDF',
-      symtoms: (!item.anamnese.medicalData || item.anamnese.medicalData.length === 0) ? item.symtoms.toString() : (item.anamnese.medicalData[item.anamnese.medicalData.length - 1]) ? item.anamnese.medicalData[item.anamnese.medicalData.length - 1].symtoms.toString() : 'NDF' */
+      lastVisit: (dataRowResolver(item, 'lastVisit') === '1 year') ? '1 ano': (dataRowResolver(item, 'lastVisit') === '6 months') ? '6 meses' : (dataRowResolver(item, 'lastVisit') === '3 months') ? '3 meses' : '' ,
+      dentistFear: (dataRowResolver(item, 'dentistFear') === true) ? 'sim' : 'não',
+      // doctorLastVisit: (dataRowResolver(item, 'lastVisit') === '1 year') ? '1 ano': (dataRowResolver(item, 'lastVisit') === '6 months') ? '6 meses' : (dataRowResolver(item, 'lastVisit') === '3 months') ? '3 meses' : '' ,
+      healthProblems: (dataRowResolver(item, 'healthProblems') === true) ? 'sim' : 'não',
+      healthProblemsDetails: dataRowResolver(item, 'healthProblemsDetails'),
+      takeMedication: (dataRowResolver(item, 'takeMedication') === true) ? 'sim' : 'não',
+      // takeMedicationDetails: (!item.anamnese.medicalData || item.anamnese.medicalData.length === 0) ? item.takeMedicationDetails.toString() : (item.anamnese.medicalData[item.anamnese.medicalData.length - 1]) ? item.anamnese.medicalData[item.anamnese.medicalData.length - 1].takeMedicationDetails.toString() : 'NDF',
+      // haveAllergy: (!item.anamnese.medicalData || item.anamnese.medicalData.length === 0) ? rightChoose(item.haveAllergy).toString() : (item.anamnese.medicalData[item.anamnese.medicalData.length - 1]) ? rightChoose(item.anamnese.medicalData[item.anamnese.medicalData.length - 1].haveAllergy).toString() : 'NDF',
+      // haveAllergyDetails: (!item.anamnese.medicalData || item.anamnese.medicalData.length === 0) ? item.haveAllergyDetails.toString() : (item.anamnese.medicalData[item.anamnese.medicalData.length - 1]) ? item.anamnese.medicalData[item.anamnese.medicalData.length - 1].haveAllergyDetails.toString() : 'NDF',
+      // diabetes: (!item.anamnese.medicalData || item.anamnese.medicalData.length === 0) ? rightChoose(item.diabetes.toString()) : (item.anamnese.medicalData[item.anamnese.medicalData.length - 1]) ? rightChoose(item.anamnese.medicalData[item.anamnese.medicalData.length - 1].diabetes).toString() : 'NDF',
+      // hearthProblem: (!item.anamnese.medicalData || item.anamnese.medicalData.length === 0) ? rightChoose(item.hearthProblem).toString() : (item.anamnese.medicalData[item.anamnese.medicalData.length - 1]) ? rightChoose(item.anamnese.medicalData[item.anamnese.medicalData.length - 1].hearthProblem).toString() : 'NDF',
+      // pregnant: (!item.anamnese.medicalData || item.anamnese.medicalData.length === 0) ? rightChoose(item.pregnant).toString() : (item.anamnese.medicalData[item.anamnese.medicalData.length - 1]) ? rightChoose(item.anamnese.medicalData[item.anamnese.medicalData.length - 1].pregnant).toString() : 'NDF',
+      // symtoms: (!item.anamnese.medicalData || item.anamnese.medicalData.length === 0) ? item.symtoms.toString() : (item.anamnese.medicalData[item.anamnese.medicalData.length - 1]) ? item.anamnese.medicalData[item.anamnese.medicalData.length - 1].symtoms.toString() : 'NDF'
       // telefone: (!item.anamnese.medicalData || item.anamnese.medicalData.length === 0) ? item.telefone : (item.anamnese.medicalData[item.anamnese.medicalData.length - 1]) ? item.anamnese.medicalData[item.anamnese.medicalData.length - 1].telefone : '',
       // telefone: (!item.anamnese.medicalData || item.anamnese.medicalData.length === 0) ? item.telefone : (item.anamnese.medicalData[item.anamnese.medicalData.length - 1]) ? item.anamnese.medicalData[item.anamnese.medicalData.length - 1].telefone : '',
       // telefone: (!item.anamnese.medicalData || item.anamnese.medicalData.length === 0) ? item.telefone : (item.anamnese.medicalData[item.anamnese.medicalData.length - 1]) ? item.anamnese.medicalData[item.anamnese.medicalData.length - 1].telefone : '',
@@ -99,7 +100,6 @@ function Table ({ rows }) {
       // telefone: (!item.anamnese.medicalData || item.anamnese.medicalData.length === 0) ? item.telefone : (item.anamnese.medicalData[item.anamnese.medicalData.length - 1]) ? item.anamnese.medicalData[item.anamnese.medicalData.length - 1].telefone : '',
       // telefone: (!item.anamnese.medicalData || i  tem.anamnese.medicalData.length === 0) ? item.telefone : (item.anamnese.medicalData[item.anamnese.medicalData.length - 1]) ? item.anamnese.medicalData[item.anamnese.medicalData.length - 1].telefone : ''
     }
-    console.log('ESSAPORRA DE ITEM', item) 
     return item
   })
   const tableData = {
