@@ -36,6 +36,11 @@ const dataState = {
       sort: 'asc'
     },
     {
+      label: 'Ultima Visita ao medico',
+      field: 'Ultima Visita ao medico',
+      sort: 'asc'
+    },
+    {
       label: 'Problema de saude',
       field: 'Problema de saude',
       sort: 'asc'
@@ -43,11 +48,6 @@ const dataState = {
     {
       label: 'detalhes de problema de saúde',
       field: 'detalhes de problema de saúde',
-      sort: 'asc'
-    },
-    {
-      label: 'toma medicamentos',
-      field: 'toma medicamentos',
       sort: 'asc'
     },
     {

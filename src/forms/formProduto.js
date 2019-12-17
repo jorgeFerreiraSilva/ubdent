@@ -19,19 +19,20 @@ import useGlobal from '../Store'
 import TextareaAutosize from '@material-ui/core/TextareaAutosize'
 
 function FormProduto () {
-
   const correctDataResolver = () => {
     try {
       if (location.state.anamnese.anamnese.medicalData &&
          location.state.anamnese.anamnese.medicalData.length === 0) {
-        const newData = { 
+        const newData = {
           ...state.api.emptyMedicalData,
-           ...location.state.root }
+          ...location.state.root
+        }
         return newData
       } else {
-        const newData = { 
+        const newData = {
           ...state.api.emptyMedicalData,
-           ...location.state.anamnese.anamnese.medicalData[location.state.anamnese.anamnese.medicalData.length - 1] }
+          ...location.state.anamnese.anamnese.medicalData[location.state.anamnese.anamnese.medicalData.length - 1]
+        }
         return newData
       }
     } catch (error) {
@@ -46,7 +47,7 @@ function FormProduto () {
   const [localState, localSetState] = useState({
     root: location.state.root,
     medicalData: correctDataResolver(),
-    files: location.state.anamnese.files
+    files: location.state.anamnese.anamnese.files
   })
 
   useEffect(() => {
@@ -71,18 +72,6 @@ function FormProduto () {
       console.log(error)
     }
   }
-
-  // const correctItem = (item, property) => {
-  //   try {
-  //     console.log(test)
-  //     if (item.anamnese.medicalData !== null && item.anamnese.medicalData !== undefined) {
-  //       if (item.anamnese.medicalData.length === 0) return item[property]
-  //       if (item.anamnese.medicalData[item.anamnese.medicalData.length - 1]) return item.anamnese.medicalData[item.anamnese.medicalData.length - 1][property]
-  //     }
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }
 
   useEffect(() => {
     console.log('localState', localState)
