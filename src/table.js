@@ -55,15 +55,9 @@ function Table ({ rows }) {
     try {
       if (item.anamnese.medicalData &&
          item.anamnese.medicalData.length !== 0) {
-           console.log('entrou1')
-          return item.anamnese.medicalData[item.anamnese.medicalData.length - 1][property]
-         }
-        //  else if (item.anamnese.medicalData &&
-        //   item.anamnese.medicalData.length !== 0 && (question === true)) {
-        //     console.log('entrou2')
-        //     return item.anamnese.medicalData[item.anamnese.medicalData.length - 1][property]
-        //   }
-         else return 'NDF'
+        console.log('entrou1')
+        return item.anamnese.medicalData[item.anamnese.medicalData.length - 1][property]
+      } else return ''
     } catch (error) {
       console.log(error)
     }
@@ -79,7 +73,7 @@ function Table ({ rows }) {
       name: (!item.anamnese.medicalData || item.anamnese.medicalData.length === 0) ? item.name.toString() : (item.anamnese.medicalData[item.anamnese.medicalData.length - 1]) ? item.anamnese.medicalData[item.anamnese.medicalData.length - 1].name.toString() : 'NDF',
       cpf: (!item.anamnese.medicalData || item.anamnese.medicalData.length === 0) ? dataBefore.cpf.toString() : (item.anamnese.medicalData[item.anamnese.medicalData.length - 1]) ? item.anamnese.medicalData[item.anamnese.medicalData.length - 1].document.toString() : 'NDF',
       email: dataRowResolver(item, 'email'),
-      telefone: (!item.anamnese.medicalData || item.anamnese.medicalData.length === 0) ? item.phone.toString() : (item.anamnese.medicalData[item.anamnese.medicalData.length - 1]) ? item.anamnese.medicalData[item.anamnese.medicalData.length - 1].phone.toString() : 'NDF',
+      telefone: dataRowResolver(item, 'phone'),
       lastVisit: (dataRowResolver(item, 'lastVisit') === '1 year') ? '1 ano' : (dataRowResolver(item, 'lastVisit') === '6 months') ? '6 meses' : (dataRowResolver(item, 'lastVisit') === '3 months') ? '3 meses' : '',
       dentistFear: (dataRowResolver(item, 'dentistFear') === true) ? 'sim' : 'não',
       doctorLastVisit: (dataRowResolver(item, 'doctorLastVisit') === '1 year') ? '1 ano' : (dataRowResolver(item, 'doctorLastVisit') === '6 months') ? '6 meses' : (dataRowResolver(item, 'doctorLastVisit') === '3 months') ? '3 meses' : '',
@@ -132,7 +126,7 @@ function Table ({ rows }) {
                   infoLabel={['Mostrando', 'até', 'de', 'resultados']}
                   paginationLabel={['Anterior', 'Próximo']}
                   data={tableData}
-                  />}
+                />}
             </CardBody>
           </Card>
         </Col>
